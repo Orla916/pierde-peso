@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cirugía Bariátrica y Turismo Médico en Cali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos CSS Generales */
+        body {
+            font-family: 'Nunito', sans-serif; /* Fuente para el cuerpo del texto */
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8; /* Gris muy claro de fondo */
+            color: #333; /* Gris oscuro para el texto principal */
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased; /* Mejora el renderizado de fuentes en navegadores webkit */
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .container {
+            max-width: 1200px; /* Ancho máximo más amplio para una mejor presentación */
+            margin: 50px auto; /* Más margen superior e inferior */
+            padding: 40px; /* Más espacio interno */
+            background-color: #fff;
+            border-radius: 12px; /* Bordes más redondeados */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Sombra más pronunciada */
+        }
+        h1, h2 {
+            font-family: 'Montserrat', sans-serif; /* Fuente para los títulos */
+            color: #45a09d; /* Azul verdoso como color primario para los títulos */
+            text-align: center;
+            margin-bottom: 30px; /* Más espacio debajo de los títulos */
+            font-weight: 700; /* Títulos en negrita */
+        }
+        h1 {
+            font-size: 2.5em;
+        }
+        h2 {
+            font-size: 2em;
+        }
+        p {
+            margin-bottom: 20px;
+            color: #555;
+            font-size: 1.1em;
+        }
+        a {
+            color: #45a09d;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #64ccc9;
+        }
+
+        /* Sección de Perfil */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .profile-image {
+            width: 180px; /* Imagen de perfil más grande */
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            border: 5px solid #e0f7fa; /* Borde sutil alrededor de la imagen */
+        }
+        .profile-section h2 {
+            color: #333; /* Nombre en color más oscuro */
+        }
+        .profile-section p {
+            font-size: 1.2em;
+            color: #777;
+        }
+
+        /* Calculadora de IMC */
+        .imc-calculator {
+            margin-top: 30px;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            background-color: #f9f9f9;
+        }
+        .imc-calculator .form-group {
+            margin-bottom: 20px;
+        }
+        .imc-calculator label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600; /* Etiqueta en semibold */
+            color: #333;
+            font-size: 1.1em;
+        }
+        .imc-calculator input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        .imc-calculator button {
+            padding: 15px 25px;
+            background-color: #64CCC9; /* Color primario más vibrante para el botón */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+        .imc-calculator button:hover {
+            background-color: #45a09d;
+        }
+        .imc-calculator #resultado-imc {
+            margin-top: 25px;
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #28a745;
+            text-align: center;
+        }
+        .imc-calculator #interpretacion-imc {
+            margin-top: 15px;
+            font-style: italic;
+            color: #777;
+            text-align: center;
+        }
+
+        /* Sección de Servicios */
+        .servicios-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Tarjetas de servicio un poco más anchas */
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .servicio-item {
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease-in-out; /* Efecto de elevación al pasar el ratón */
+        }
+        .servicio-item:hover {
+            transform: translateY(-5px);
+        }
+        .servicio-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .servicio-item h3 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+        .servicio-item p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        /* Información de Contacto */
+        .contacto-info {
+            margin-top: 40px;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            background-color: #f9f9f9;
+        }
+        .contacto-info p {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+        .contacto-info strong {
+            font-weight: 600;
+            color: #45a09d;
+        }
+        .contacto-info a {
+            color: #007bff; /* Enlace de correo electrónico más destacado */
+        }
+        .contacto-info a:hover {
+            color: #0056b3;
+        }
+
+        /* Video */
+        .video-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .video-container iframe {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Formulario de Contacto */
+        #formulario-contacto {
+            margin-top: 40px;
+            padding: 30px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            background-color: #fff;
+        }
+        #formulario-contacto .form-group {
+            margin-bottom: 25px;
+        }
+        #formulario-contacto label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+        #formulario-contacto input[type="text"],
+        #formulario-contacto input[type="email"],
+        #formulario-contacto input[type="tel"],
+        #formulario-contacto textarea {
+            width: calc(100% - 20px);
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+        }
+        #formulario-contacto textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        #formulario-contacto button[type="submit"] {
+            padding: 15px 30px;
+            background-color: #28a745; /* Verde para el botón de enviar */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
+        #formulario-contacto button[type="submit"]:hover {
+            background-color: #1e7e34;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>¡Bienvenidos a una experiencia que transforma vidas!</h1>
+        <p>Ofrezco servicios de cirugía bariátrica de alta calidad para pacientes nacionales e internacionales, combinando procedimientos avanzados con una experiencia de turismo médico integral en la hermosa ciudad de Cali, Colombia.</p>
+
+        <div class="profile-section">
+            <img src="https://i.imgur.com/dZ7Evi7.png" alt="Dr. Orlando Arévalo" class="profile-image">
+            <h2>Dr. Orlando Arévalo</h2>
+            <p>Cirujano General y Bariátrico, experto en pared abdominal y cirugía minimamente invasiva</p>
+        </div>
+
+        <h2>Calcula tu Índice de Masa Corporal (IMC)</h2>
+        <div class="imc-calculator">
+            <div class="form-group">
+                <label for="peso">Peso (en kg):</label>
+                <input type="number" id="peso" placeholder="Ej: 80">
+            </div>
+            <div class="form-group">
+                <label for="talla">Talla (en metros):</label>
+                <input type="number" id="talla" placeholder="Ej: 1.75">
+            </div>
+            <button onclick="calcularIMC()">Calcular IMC</button>
+            <div id="resultado-imc"></div>
+            <div id="interpretacion-imc"></div>
+        </div>
+
+        <h2>Nuestro Portafolio de Servicios</h2>
+        <div class="servicios-grid">
+            <div class="servicio-item">
+                <img src="https://obesityout.com.mx/wp2023/wp-content/uploads/2023/06/Manga-Gastrica-Gastric-Sleeve-Obesity-Out-GP-art-scale-1_00x.jpg" alt="Manga Gástrica">
+                <h3>Manga Gástrica</h3>
+                <p>Procedimiento restrictivo que reduce el tamaño del estómago, ayudando a disminuir la ingesta de alimentos.</p>
+            </div>
+            <div class="servicio-item">
+                <img src="https://obesityout.com.mx/wp2023/wp-content/uploads/2023/06/Bypass-GP-art-scale-1_00x.jpg" alt="Bypass Gástrico en Y de Roux">
+                <h3>Bypass Gástrico en Y de Roux</h3>
+                <p>Técnica que combina restricción y malaabsorción para una pérdida de peso significativa.</p>
+            </div>
+            <div class="servicio-item">
+                <img src="https://obesityout.com.mx/wp2023/wp-content/uploads/2023/06/Mini-Bypass-Gastric-Obesity-Out.jpg" alt="OAGB">
+                <h3>OAGB (Bypass Gástrico de una Anastomosis)</h3>
+                <p>Variante del bypass gástrico con una sola conexión intestinal.</p>
+            </div>
+            <div class="servicio-item">
+                <img src="https://html.scirp.org/file/2301973-rId52.jpeg?20250306111851" alt="BAGUA">
+                <h3>BAGUA (Bypass Gástrico con Anastomosis Único)</h3>
+                <p>Otra variación del bypass gástrico con una anastomosis.</p>
+            </div>
+            <div class="servicio-item">
+                <img src="https://obesityout.com.mx/wp2023/wp-content/uploads/2023/06/SADIs-GP-art-scale-1_00x.jpg" alt="SADIS">
+                <h3>SADIS (Derivación Biliopancreática con Cruce Duodenal de Anastomosis Única)</h3>
+                <p>Procedimiento que combina restricción gástrica con malaabsorción intestinal.</p>
+            </div>
+            <div class="servicio-item">
+                <img src="https://html.scirp.org/file/2301973-rId59.jpeg?20250306111855" alt="SASI">
+                <h3>SASI (Derivación Alimentaria con Anastomosis Única)</h3>
+                <p>Técnica que busca preservar el píloro y reducir la malaabsorción.</p>
+            </div>
+            <div class="servicio-item">
+                <img src="https://i.ytimg.com/vi/mavAkip-wfE/maxresdefault.jpg" alt="Balón Gástrico">
+                <h3>Balón Gástrico</h3>
+                <p>Dispositivo temporal que se introduce en el estómago para ocupar espacio y reducir el apetito.</p>
+            </div>
+            <div class="servicio-item">
+                <img src="https://drdeveshkaushal.com.au/wp-content/uploads/2023/11/gallbladder-surgery-image.jpg" alt="Colecistectomía Laparoscópica">
+                <h3>Colecistectomía Laparoscópica</h3>
+                <p>Cirugía mínimamente invasiva para la extirpación de la vesícula biliar.</p>
+            </div>
+            <div class="servicio-item">
+                <img src="https://media.healthdirect.org.au/images/inline/original/gs23_fig1_incisional-hernia-100d5c.png" alt="Corrección de Hernias">
+                <h3>Corrección de Todo Tipo de Hernias</h3>
+                <p>Reparación quirúrgica de hernias inguinales, umbilicales, ventrales, etc., utilizando técnicas avanzadas.</p>
+            </div>
+        </div>
+
+        <h2>Información de Contacto</h2>
+        <div class="contacto-info">
+            <p><strong>Dirección del Consultorio:</strong> Sede en Cali - Valle del Cauca y Putumayo, Colombia</p>
+            <p><strong>Teléfono:</strong> 3234605823</p>
+            <p><strong>Correo Electrónico:</strong> <a href="mailto:ofag15@hotmail.com">ofag15@hotmail.com</a></p>
+        </div>
+
+        <h2>Contáctanos</h2>
+        <p>Por favor, completa el siguiente formulario para enviarnos tus preguntas o solicitar más información sobre nuestros servicios. Te responderemos a la brevedad.</p>
+        <form id="formulario-contacto" action="https://formspree.io/f/moveolkr" method="POST">
+            <div class="form-group">
+                <label for="nombre">Nombre completo:</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Número de teléfono (con código de país):</label>
+                <input type="tel" id="telefono" name="telefono">
+            </div>
+            <div class="form-group">
+                <label for="pais">País de origen:</label>
+                <input type="text" id="pais" name="pais">
+            </div>
+            <div class="form-group">
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
+            </div>
+            <button type="submit">Enviar Mensaje</button>
+        </form>
+    </div>
+
+    <script>
+        function calcularIMC() {
+            const peso = parseFloat(document.getElementById("peso").value);
+            const talla = parseFloat(document.getElementById("talla").value);
+
+            if (isNaN(peso) || isNaN(talla) || talla <= 0) {
+                document.getElementById("resultado-imc").textContent = "Por favor, ingresa valores válidos para peso y talla.";
+                document.getElementById("interpretacion-imc").textContent = "";
+                return;
+            }
+
+            const imc = peso / (talla * talla);
+            document.getElementById("resultado-imc").textContent = `Tu IMC es: ${imc.toFixed(2)}`;
+            interpretarIMC(imc);
+        }
+
+        function interpretarIMC(imc) {
+            let interpretacion = "";
+            if (imc < 18.5) {
+                interpretacion = "Bajo peso. Se recomienda una evaluación médica.";
+            } else if (imc >= 18.5 && imc < 25) {
+                interpretacion = "Peso normal.";
+            } else if (imc >= 25 && imc < 30) {
+                interpretacion = "Sobrepeso. Se recomienda una evaluación médica para definir manejo farmacologico y/o balon gastrico.";
+            } else if (imc >= 30 && imc < 35) {
+                interpretacion = "Obesidad grado I. Podría ser candidato para cirugía bariátrica, se requiere evaluación.";
+            } else if (imc >= 35 && imc < 40) {
+                interpretacion = "Obesidad grado II. Generalmente considerado candidato para cirugía bariátrica, se requiere evaluación.";
+            } else if (imc >= 40 && imc < 50) {
+                interpretacion = "Obesidad grado III (obesidad morbida). Considerado candidato para cirugía bariátrica, se requiere evaluación.";
+
+            } else {
+                interpretacion = "Obesidad grado IV (Super obesidad). Fuertemente recomendado la cirugía bariátrica, se requiere evaluación.";
+            }
+            document.getElementById("interpretacion-imc").textContent = interpretacion + " Este es un cálculo preliminar y no sustituye una consulta médica.";
+        }
+    </script>
+</body>
+</html>
+
+
+
+
